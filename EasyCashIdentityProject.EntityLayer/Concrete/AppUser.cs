@@ -14,6 +14,7 @@ namespace EasyCashIdentityProject.EntityLayer.Concrete
         public String? District { get; set; }
         public String? City { get; set; }
         public String? ImageUrl { get; set; }
+        public int? ConfirmCode { get; set; }
         public List<CustomerAccount> CustomerAccounts { get; set; }
     }
 }
