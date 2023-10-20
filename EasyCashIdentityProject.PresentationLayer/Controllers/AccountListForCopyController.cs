@@ -6,23 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EasyCashIdentityProject.PresentationLayer.Controllers
 {
-    public class MyLastProcessController : Controller
+    public class AccountListForCopyController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly ICustomerAccountProcessService _customerAccountProcessService;
+        private readonly ICustomerAccountService _customerAccountService;
 
-        public MyLastProcessController(UserManager<AppUser> userManager, ICustomerAccountProcessService customerAccountProcessService)
+        public AccountListForCopyController(UserManager<AppUser> userManager, ICustomerAccountService customerAccountService)
         {
             _userManager=userManager;
-            _customerAccountProcessService=customerAccountProcessService;
+            _customerAccountService=customerAccountService;
         }
 
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var context = new Context();
-            int id = context.CustomerAccounts.Where(x=>x.AppUserID == user.Id && x.Currency=="Türk Lirası").Select(y=>y.CustomerAccountID).FirstOrDefault();
-            var values = _customerAccountProcessService.Service_MyLastProcess(id);
+            var values = _customerAccountService.Service_GetCustomerAccountsList(user.Id);
             return View(values);
         }
     }

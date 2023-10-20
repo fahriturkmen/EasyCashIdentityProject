@@ -16,6 +16,8 @@ builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context
 builder.Services.AddScoped<ICustomerAccountProcessDal, EfCustomerAccountProcessDal>();
 builder.Services.AddScoped<ICustomerAccountProcessService,CustomerAccountProcessManager>();
 
+builder.Services.AddScoped<ICustomerAccountDal, EfCustomerAccountDal>();
+builder.Services.AddScoped<ICustomerAccountService, CustomerAccountManager>();
 
 var app = builder.Build();
 

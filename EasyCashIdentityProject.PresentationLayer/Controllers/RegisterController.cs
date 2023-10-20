@@ -49,7 +49,7 @@ namespace EasyCashIdentityProject.PresentationLayer.Controllers
                 {
                     
                     MimeMessage mimeMessage = new MimeMessage();
-                    MailboxAddress mailboxAddressFrom = new MailboxAddress("Easy Cash Admin","bukurka@gmail.com");
+                    MailboxAddress mailboxAddressFrom = new MailboxAddress("Easy Cash Admin","abc@gmail.com");
                     MailboxAddress mailboxAdresTo = new MailboxAddress("User", appUser.Email);
 
                     mimeMessage.From.Add(mailboxAddressFrom);
